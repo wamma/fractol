@@ -6,14 +6,14 @@
 #    By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 14:27:51 by hyungjup          #+#    #+#              #
-#    Updated: 2023/01/12 16:33:01 by hyungjup         ###   ########.fr        #
+#    Updated: 2023/01/30 13:16:51 by hyungjup         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = cc
-CFLAG = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAG = -Wall -Wextra -Werror
 
 RM = rm -f
 
@@ -73,27 +73,27 @@ OBJS_BONUS = $(SRCS_BN:.c=.o)
 all : $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAG) -c $< -o $@
+	@$(CC) $(CFLAG) -c $< -o $@
 
 $(NAME) : make_mandatory
 
 bonus : make_bonus
 
 clean :
-	$(RM) $(RMFLAG) $(OBJS) $(OBJS_BONUS)
-	$(RM) $(RMFLAG) make_mandatory make_bonus
+	@$(RM) $(RMFLAG) $(OBJS) $(OBJS_BONUS)
+	@$(RM) $(RMFLAG) make_mandatory make_bonus
 
 fclean : clean
-	$(RM) $(RMFLAG) $(NAME)
+	@$(RM) $(RMFLAG) $(NAME)
 
 re : fclean all
 
 make_mandatory : $(OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-	touch $@
+	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	@touch $@
 
 make_bonus : $(OBJS) $(OBJS_BONUS)
-	$(AR) $(ARFLAGS) $(NAME) $^
-	touch $@
+	@$(AR) $(ARFLAGS) $(NAME) $^
+	@touch $@
 
  .PHONY : all clean fclean re bonus
