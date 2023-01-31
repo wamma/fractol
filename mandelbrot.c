@@ -6,7 +6,7 @@
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:14:28 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/01/27 14:40:51 by hyungjup         ###   ########.fr       */
+/*   Updated: 2023/01/31 18:55:21 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,44 @@
 
 void	mandelbrot_init(t_fractol *f)
 {
-	f->x1 = -3.3;
-	f->y1 = -1.6;
+	f->type = 0;
 	f->zoom = 300;
-	f->color = 265;
+	f->iter_max = 255;
+	f->x_set = -3.1;
+	f->y_set = 2.5;
 }
 
-void	mandelbrot_cal(t_fractol *f)
+void	pixel_draw(t_fractol *f, int color)
 {
-	f->c_real = f->x / f->zoom + f->x1;
-	f->c_imag = f->y / f->zoom + f->y1;
-	f->zn_real = 0;
-	f->zn_imag = 0;
-	f->it = 0;
-	while (f->it < ITER_MAX && f->zn_real * \
-	f->zn_real + f->zn_imag * f->zn_imag < 4)
+	char	*dst;
+
+	dst = f->addr + (f->y * f->line_len + f->x * (f->bpp / 8));
+	*(unsigned int *)dst = color;
+}
+
+void	mandelbrot_calculate(t_fractol *f)
+{
+	double	z_tmp;
+
+	f->c_r = f->x / f->zoom + f->x_set;
+	f->c_i = f->y / f->zoom + f->y_set;
+	f->z_r = 0;
+	f->z_i = 0;
+	f->iter = 0;
+	while (f->iter < f->iter_max && f->z_r * f->z_r + f->z_i * f->z_i < 4)
 	{
-		f->tmp = f->zn_real;
-		f->zn_real = f->zn_real * f->zn_real - \
-		f->zn_imag * f->zn_imag + f->c_real;
-		f->zn_imag = 2 * f->zn_real * f->zn_imag + f->c_imag;
-		f->it++;
+		z_tmp = f->z_r;
+		f->z_r = f->z_r * f->z_r - f->z_i * f->z_i + f->c_r;
+		f->z_i = 2 * f->z_i * z_tmp + f->c_i;
+		f->iter++;
 	}
-	if (f->it == ITER_MAX)
-		ft_pixel_to_image(f, f->x, f->y, 0x000000);
+	if (f->iter == f->iter_max)
+		pixel_draw(f, 0x000000);
 	else
-		ft_pixel_to_image(f, f->x, f->y, (f->color * f->it));
+		pixel_draw(f, (f->color * f->iter));
 }
 
-void	*mandelbrot(void *tab)
+void	mandelbrot(t_fractol *f)
 {
-	t_fractol	*f;
 
-	f = (t_fractol *)tab;
-	f->x = 0;
-	while (f->x < WIN_WIDTH)
-	{
-		while (f->y < f->y_max)
-		{
-			mandelbrot_cal(f);
-			f->y++;
-		}
-		f->x++;
-	}
-	return (f);
 }
