@@ -6,7 +6,7 @@
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:12:02 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/01/31 17:06:29 by hyungjup         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:44:06 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,48 @@
 # define WIN_WIDTH		800
 # define WIN_HEIGHT		800
 # define ZOOM_RATE		1.2
+# define ITER_MAX		255
 
-typedef struct s_fractol
+typedef struct s_complex
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	void	*addr;
+	double	x;
+	double	y;
+}	t_complex;
+
+typedef struct s_image
+{
+	void	*ptr;
+	int		*buff;
 	int		bpp;
 	int		line_len;
 	int		endian;
-	int		type;
-	int		color;
-	int		mask;
-	int		x;
-	int		y;
-	int		iter;
-	int		iter_max;
-	double	zoom;
-	double	c_r;
-	double	c_i;
-	double	z_r;
-	double	z_i;
-	double	x_set;
-	double	y_set;
+}	t_image;
+
+typedef struct s_fractol
+{
+	void		*mlx;
+	void		*win;
+	t_image		*img;
+	int			set;
+	int			type;
+	int			color;
+	int			iter_max;
+	double		zoom;
+	t_complex	center;
+	double		x_max;
+	double		x_min;
+	double		y_max;
+	double		y_min;
+	int			iter;
+	t_complex	julia;
 }	t_fractol;
+
+/*main.c*/
+void	image_init(t_fractol *f);
 /*mandelbrot.c*/
-void	mandelbrot_init(t_fractol *f);
-/*julia.c*/
-int		julia_mouse_move(int x, int y, t_fractol *f);
-/*fractol_utils.c*/
+int		ft_mandelbrot(t_fractol *f, t_complex center);
+/*fractol_draw.c*/
+void	draw(t_fractol *f);
+int		ft_error(char *err);
 
 #endif

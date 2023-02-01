@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   fractol_type.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 17:45:02 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/01/26 13:39:47 by hyungjup         ###   ########.fr       */
+/*   Created: 2023/01/18 17:14:28 by hyungjup          #+#    #+#             */
+/*   Updated: 2023/02/01 16:43:54 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	julia_init(t_fractol *f)
+int	ft_mandelbrot(t_fractol *f, t_complex center)
 {
-	f->it_max = 50;
-}
+	t_complex	z;
+	double		tmp;
 
-int	julia_mouse_move(int x, int y, t_fractol *f)
-{
-	if (f->fract == 1 && f->julia_mouse == 1)
+	z.x = center.x;
+	z.y = center.y;
+	f->iter = 0;
+	while (f->iter < ITER_MAX && (z.x * z.x) + (z.y * z.y) < 4)
 	{
-		f->c_i = x * 2;
-		f->c_r = y * 2 - 800;
-		fractol_calculate(f);
+		tmp = z.x * z.x - z.y * z.y + center.x;
+		z.y = 2 * z.x * z.y + center.y;
+		z.x = tmp;
+		f->iter++;
 	}
-	return (0);
+	return (f->iter);
 }
