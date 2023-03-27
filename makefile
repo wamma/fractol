@@ -6,23 +6,23 @@
 #    By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 15:21:03 by hyungjup          #+#    #+#              #
-#    Updated: 2023/02/01 16:29:15 by hyungjup         ###   ########.fr        #
+#    Updated: 2023/03/27 20:40:27 by hyungjup         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
 CC = cc
-CFLAG = -Wall -Wextra -Werror
+CFLAG = -Wall -Wextra -Werror -g
 RM = rm -f
 LIB_DIR = ./libft
 LIBFLAG = -lft -L$(LIB_DIR)
-MLX = -L. -lmlx -framework OpenGL -framework AppKit
+MLX = -L./mlx -lmlx -framework OpenGL -framework AppKit
 
 SRCS = fractol.c\
-	   error.c\
 	   fractol_type.c\
-	   fractol_draw.c
+	   fractol_draw.c\
+	   error.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -33,7 +33,6 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	@make -C $(LIB_DIR)
 	@make -C mlx
-	@mv ./mlx/libmlx.dylib ./libmlx.dylib
 	@$(CC) $(CFLAGS) $(MLX) $(LIBFLAG) $(OBJS) -o $(NAME)
 
 %.o : %.c $(HEADER)
@@ -50,7 +49,6 @@ fclean : clean
 	@$(RM) $(NAME)
 	@make -C $(LIB_DIR) fclean
 	@make clean -C mlx
-	@$(RM) libmlx.dylib
 	@echo "$(RED)all deleted"
 
 re : fclean all

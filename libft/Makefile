@@ -6,7 +6,7 @@
 #    By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 14:27:51 by hyungjup          #+#    #+#              #
-#    Updated: 2023/01/30 13:16:51 by hyungjup         ###   ########.fr        #
+#    Updated: 2023/02/06 15:09:15 by hyungjup         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,20 +80,20 @@ $(NAME) : make_mandatory
 bonus : make_bonus
 
 clean :
-	@$(RM) $(RMFLAG) $(OBJS) $(OBJS_BONUS)
-	@$(RM) $(RMFLAG) make_mandatory make_bonus
+	$(RM) $(RMFLAG) $(OBJS) $(OBJS_BONUS)
+	$(RM) $(RMFLAG) make_mandatory make_bonus
 
 fclean : clean
-	@$(RM) $(RMFLAG) $(NAME)
+	$(RM) $(RMFLAG) $(NAME)
 
 re : fclean all
 
 make_mandatory : $(OBJS)
-	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-	@touch $@
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	touch $@
 
 make_bonus : $(OBJS) $(OBJS_BONUS)
-	@$(AR) $(ARFLAGS) $(NAME) $^
-	@touch $@
+	$(AR) $(ARFLAGS) $(NAME) $^
+	touch $@
 
  .PHONY : all clean fclean re bonus

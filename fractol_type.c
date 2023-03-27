@@ -6,26 +6,27 @@
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:14:28 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/02/01 16:43:54 by hyungjup         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:46:34 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	ft_mandelbrot(t_fractol *f, t_complex center)
+int	ft_mandelbrot(t_complex c)
 {
 	t_complex	z;
 	double		tmp;
+	int			i;
 
-	z.x = center.x;
-	z.y = center.y;
-	f->iter = 0;
-	while (f->iter < ITER_MAX && (z.x * z.x) + (z.y * z.y) < 4)
+	z.x = c.x;
+	z.y = c.y;
+	i = 0;
+	while (i < ITER_MAX && (z.x * z.x) + (z.y * z.y) < 4)
 	{
-		tmp = z.x * z.x - z.y * z.y + center.x;
-		z.y = 2 * z.x * z.y + center.y;
+		tmp = (z.x * z.x - z.y * z.y) + c.x;
+		z.y = (2 * z.x * z.y) + c.y;
 		z.x = tmp;
-		f->iter++;
+		i++;
 	}
-	return (f->iter);
+	return (i);
 }

@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   fractol_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 13:11:31 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/02/06 15:02:50 by hyungjup         ###   ########.fr       */
+/*   Created: 2023/02/06 14:37:11 by hyungjup          #+#    #+#             */
+/*   Updated: 2023/02/06 14:38:17 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	ft_error(char *err)
+int	ft_check_equal(const char *s1, const char *s2)
 {
-	write(2, err, ft_strlen(err));
-	exit (1);
+	size_t	i;
+
+	i = 0;
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (0);
+	}
 }
