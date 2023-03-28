@@ -6,14 +6,14 @@
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:11:31 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/02/06 15:02:50 by hyungjup         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:51:25 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 int	ft_error(char *err)
 {
 	write(2, err, ft_strlen(err));
-	exit (1);
+	return (0);
 }

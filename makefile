@@ -6,7 +6,7 @@
 #    By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 15:21:03 by hyungjup          #+#    #+#              #
-#    Updated: 2023/03/27 20:40:27 by hyungjup         ###   ########.fr        #
+#    Updated: 2023/03/28 19:38:54 by hyungjup         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,10 @@ LIB_DIR = ./libft
 LIBFLAG = -lft -L$(LIB_DIR)
 MLX = -L./mlx -lmlx -framework OpenGL -framework AppKit
 
-SRCS = fractol.c\
-	   fractol_type.c\
-	   fractol_draw.c\
-	   error.c
+SRCS = ./srcs/main.c\
+	   ./srcs/fractol_type.c\
+	   ./srcs/fractol_draw.c\
+	   ./srcs/error.c
 
 OBJS = $(SRCS:.c=.o)
 
