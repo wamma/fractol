@@ -6,7 +6,7 @@
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:25:30 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/03/28 20:48:27 by hyungjup         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:57:52 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ int	main(int ac, char **av)
 {
 	t_fractol	f;
 
+	if (ac < 2)
+		ft_error("please");
 	f.type = ft_check_type(ac, av);
 	if (!fractol_init(&f, &f.img, av) || !f.type)
 		return (0);
-	draw(&f);
+	// draw(&f);
 	return (0);
 }
