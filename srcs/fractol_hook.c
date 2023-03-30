@@ -6,11 +6,11 @@
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:57:10 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/03/28 19:56:15 by hyungjup         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:57:12 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 void	ft_key_move(t_fractol *f, int keycode)
 {
