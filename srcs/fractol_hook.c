@@ -6,13 +6,13 @@
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:57:10 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/03/31 16:17:15 by hyungjup         ###   ########.fr       */
+/*   Updated: 2023/03/31 20:46:25 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	press_esc(int keycode, t_fractol *f)
+int	press_esc(int keycode)
 {
 	if (keycode == KEY_ESC)
 		exit(0);

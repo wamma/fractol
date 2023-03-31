@@ -6,7 +6,7 @@
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:25:30 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/03/31 19:08:29 by hyungjup         ###   ########.fr       */
+/*   Updated: 2023/03/31 20:51:32 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_check_type(int ac, char **av, t_fractol *f)
 	(ac == 2 && !ft_check_equal(av[1], "Mandelbrot")) || \
 	(ac == 4 && !ft_check_equal(av[1], "Julia")))
 	{
-		ft_error("Recommend writing it as \"Mandelbrot\" or \"Julia -0.7 -0.27015\"");
+		ft_error("Recommend arguments \"Mandelbrot\"or\"Julia -0.7 -0.27015\"\n");
 		return (0);
 	}
 	if (ft_check_equal(av[1], "Mandelbrot") == 1)

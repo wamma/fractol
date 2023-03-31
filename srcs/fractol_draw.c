@@ -6,7 +6,7 @@
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:30:05 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/03/31 16:50:48 by hyungjup         ###   ########.fr       */
+/*   Updated: 2023/03/31 20:45:47 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	coloring_pixel(t_fractol *f, t_complex p, int x, int y)
 	int	blue;
 	int	color;
 
+	ret = 0;
 	if (f->type == 1)
 		ret = ft_mandelbrot(p);
 	else if (f->type == 2)

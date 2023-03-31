@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 15:21:03 by hyungjup          #+#    #+#              #
-#    Updated: 2023/03/31 15:24:11 by hyungjup         ###   ########.fr        #
+#    Updated: 2023/03/31 21:25:44 by hyungjup         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,29 +33,22 @@ all : $(NAME)
 
 $(NAME): $(OBJS)
 	@make -C mlx
-	mv ./mlx/libmlx.dylib ./libmlx.dylib
+	@mv ./mlx/libmlx.dylib ./libmlx.dylib
 	@$(CC) $(CFLAG) -o $@ $^ $(MLX)
 
-%.o : %.c $(HEADER)
-	@$(CC) $(CFLAG) -c $< -o $@
+%.o : %.c
+	@$(CC) $(CFLAG) -c $< -o $@ -I $(HEADER)
 
 
 clean :
 	@$(RM) $(OBJS)
 	@make -C ./mlx clean
-	@rm ./libmlx.dylib
+	@rm -rf libmlx.dylib
 	@echo "$(YELLOW)object files deleted!"
 
 fclean : clean
 	@$(RM) $(NAME)
-	@make clean -C mlx
-	@$(RM) libmlx.dylib
 	@echo "$(RED)all deleted"
-
-test :
-	make -C mlx
-	mv ./mlx/libmlx.dylib ./libmlx.dylib
-	gcc -g $(SRCS) $(MLX)
 
 re : fclean all
 

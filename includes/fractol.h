@@ -6,7 +6,7 @@
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:12:02 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/03/31 19:08:08 by hyungjup         ###   ########.fr       */
+/*   Updated: 2023/03/31 20:46:40 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		ft_julia(t_complex center, t_complex *julia);
 int		ft_check_equal(const char *s1, const char *s2);
 int		ft_strlen(char *str);
 int		mouse_wheel(int keycode, int x, int y, t_fractol *f);
-int		press_esc(int keycode, t_fractol *f);
+int		press_esc(int keycode);
 void	ft_key_move(t_fractol *f, int keycode);
 double	ft_atof(char *str);
 
