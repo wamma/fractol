@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 15:21:03 by hyungjup          #+#    #+#              #
-#    Updated: 2023/03/30 17:02:43 by hyungjup         ###   ########.fr        #
+#    Updated: 2023/03/31 15:24:11 by hyungjup         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS = ./srcs/main.c\
 	   ./srcs/fractol_draw.c\
 	   ./srcs/fractol_type.c\
 	   ./srcs/fractol_utils.c\
-	#    ./srcs/fractol_hook.c\
+	   ./srcs/fractol_hook.c\
 
 
 OBJS = $(SRCS:.c=.o)
