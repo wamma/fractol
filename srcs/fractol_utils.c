@@ -6,7 +6,7 @@
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:37:11 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/03/31 17:27:58 by hyungjup         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:59:58 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	ft_check_equal(const char *s1, const char *s2)
 			return (0);
 		i++;
 	}
-	return (1);
+	if (s1[i] != s2[i])
+		return (0);
+	else
+		return (1);
 }
 
 static long	ft_atol(char *str)
