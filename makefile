@@ -6,7 +6,7 @@
 #    By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 15:21:03 by hyungjup          #+#    #+#              #
-#    Updated: 2023/03/31 21:25:44 by hyungjup         ###   ########.fr        #
+#    Updated: 2023/09/15 19:01:57 by hyungjup         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAG = -Wall -Wextra -Werror
 RM = rm -f
 MLX = -L. -lmlx -framework OpenGL -framework AppKit
 
-SRCS = ./srcs/main.c\
+SRCS = main.c\
 	   ./srcs/error.c\
 	   ./srcs/fractol_draw.c\
 	   ./srcs/fractol_type.c\
@@ -32,23 +32,23 @@ HEADER = fractol.h
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	@make -C mlx
-	@mv ./mlx/libmlx.dylib ./libmlx.dylib
-	@$(CC) $(CFLAG) -o $@ $^ $(MLX)
+	make -C mlx
+	mv ./mlx/libmlx.dylib ./libmlx.dylib
+	$(CC) $(CFLAG) -o $@ $^ $(MLX)
 
 %.o : %.c
-	@$(CC) $(CFLAG) -c $< -o $@ -I $(HEADER)
+	$(CC) $(CFLAG) -c $< -o $@ -I $(HEADER)
 
 
 clean :
-	@$(RM) $(OBJS)
-	@make -C ./mlx clean
-	@rm -rf libmlx.dylib
-	@echo "$(YELLOW)object files deleted!"
+	$(RM) $(OBJS)
+	make -C ./mlx clean
+	rm -rf libmlx.dylib
+	echo "$(YELLOW)object files deleted!"
 
 fclean : clean
-	@$(RM) $(NAME)
-	@echo "$(RED)all deleted"
+	$(RM) $(NAME)
+	echo "$(RED)all deleted"
 
 re : fclean all
 

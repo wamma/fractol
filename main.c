@@ -6,11 +6,11 @@
 /*   By: hyungjup <hyungjup@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:25:30 by hyungjup          #+#    #+#             */
-/*   Updated: 2023/03/31 20:51:32 by hyungjup         ###   ########.fr       */
+/*   Updated: 2023/09/15 19:02:07 by hyungjup         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "includes/fractol.h"
 
 int	ft_check_type(int ac, char **av, t_fractol *f)
 {
